@@ -5,11 +5,8 @@ import os
 
 print(os.environ)
 
-#if os.environ[]
- #   import config
 
 
-print(config.name)
 
 app = Flask(__name__)
 
