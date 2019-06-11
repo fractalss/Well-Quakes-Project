@@ -3,10 +3,14 @@ from flask import Flask, jsonify, render_template
 import pandas
 import os
 
-print(os.environ)
+#print(os.environ)
+
+if not os.environ['DYNO']:
+    import config
+    print(config.name)
 
 
-
+#print(config.name)
 
 app = Flask(__name__)
 
