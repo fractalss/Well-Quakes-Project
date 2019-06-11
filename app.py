@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, render_template
+import pymysql
 import sqlalchemy
 import flask_sqlalchemy
 import pandas
@@ -16,6 +17,7 @@ else:
     dburl = "sqlite://somesqlite"
 
 engine = sqlalchemy.create_engine(dburl)
+df = pandas.read_sql("SELECT * FROM wells_data", engine)
 
 #print(config.name)
 
