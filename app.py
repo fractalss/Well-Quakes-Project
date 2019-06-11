@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, render_template
-#import flask_sqlalchemy
+import sqlalchemy
+import flask_sqlalchemy
 import pandas
 import os
 
@@ -9,6 +10,12 @@ if not os.environ['DYNO']:
     import config
     print(config.name)
 
+if os.environ["JAWSDB_URL"]:
+    dburl = os.environ["JAWSDB_URL"]
+else:
+    dburl = "sqlite://somesqlite"
+
+engine = sqlalchemy.create_engine(dburl)
 
 #print(config.name)
 
