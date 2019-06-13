@@ -4,24 +4,25 @@ import sqlalchemy
 import flask_sqlalchemy
 import pandas
 import os
+import sqlite3
 
-#print(os.environ)
+#if not os.environ.get('DYNO'):
+ #   import config
+  #  print(config.name)
 
-if not os.environ.get('DYNO'):
-    import config
-    print(config.name)
+#if os.environ.get("JAWSDB_URL"):
+ #   dburl = os.environ["JAWSDB_URL"]
+#else:
+ #   dburl = config.dburl
 
-if os.environ.get("JAWSDB_URL"):
-    dburl = os.environ["JAWSDB_URL"]
-else:
-    dburl = config.dburl
-
-engine = sqlalchemy.create_engine(dburl)
-df = pandas.read_sql("SELECT * FROM wells_data", engine)
-print(df)
+engine = sqlalchemy.create_engine('sqlite:///data/lovingWells.sqlite')
+df = pandas.read_sql("SELECT * FROM well_data", engine)
+#print(df)
 #print(config.name)
 
 app = Flask(__name__)
+
+
 
 @app.route("/")
 def home():
