@@ -1,4 +1,4 @@
-,API,Lease_Name,Production_type,Production_Status,Drilling_Type,First_Production_Day,Cum_Oil,Cum_Gas,Cum_water,Lat,Long,Lateral Length,Spud_Date,Completion_Date,Well_Number,Upper_Perforation,Lower_Perforation,Reservoir,operator ,Cum_BOE
+,API,Lease_Name,Production_type,Production_Status,Drilling_Type,First_Production_Day,Cum_Oil,Cum_Gas,Cum_water,Lat,Long,Lateral Length,Spud_Date,Completion_Date,Well_Number,Upper_Perforation,Lower_Perforation,Reservoir,Operator,Cum_BOE
 2,4230132427,THRESHER 55-1-12 UNIT A 16H,OIL,Active,H,4/1/2018,9091.0,13875.0,0.0,31.98139381,-103.710083,9079.295898,2/11/2018,,,0,0,,,11403.50012
 3,4230132427,THRESHER 55-1-12 UNIT A 16H,OIL,Active,H,4/1/2018,9091.0,13875.0,0.0,31.98139381,-103.710083,9079.295898,2/11/2018,3/5/2018,16H,0,0,,ANADARKO E&P ONSHORE LLC,11403.50012
 4,4230132937,UNIVERSITY 20 PW UNIT 2003H,OIL,Active,H,4/1/2018,833113.0,988451.0,0.0,31.68688774,-103.33529659999999,8038.0,12/18/2017,9/18/2016,2003H,0,0,WOLFCAMP,SHELL WESTERN E&P,997854.8398
