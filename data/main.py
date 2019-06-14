@@ -8,9 +8,9 @@ df = pd.read_csv('loving.csv')
 df.columns = df.columns.str.strip()
 
 df.dropna()
-con = sqlite3.connect("wells.sqlite")
 
-# drop data into database
-df.to_sql("well_data", con)
+#import mysql.connector
+from sqlalchemy import create_engine
 
-con.close()
+engine = create_engine('mysql+pymysql://xs3a36vxsocpwln7:bhkfay3z4duniyef@mgs0iaapcj3p9srz.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/o0ot0vgk7yw8hhu1', echo=False)
+df.to_sql(name='table2', con=engine, if_exists = 'append', index=False)

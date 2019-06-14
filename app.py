@@ -6,18 +6,18 @@ import pandas
 import os
 import sqlite3
 
-#if not os.environ.get('DYNO'):
- #   import config
+if not os.environ.get('DYNO'):
+    import config
   #  print(config.name)
 
-#if os.environ.get("JAWSDB_URL"):
- #   dburl = os.environ["JAWSDB_URL"]
-#else:
- #   dburl = config.dburl
+if os.environ.get("JAWSDB_URL"):
+    dburl = os.environ["JAWSDB_URL"]
+else:
+    dburl = config.dburl
 
-engine = sqlalchemy.create_engine('sqlite:///data/lovingWells.sqlite')
-df = pandas.read_sql("SELECT * FROM well_data", engine)
-#print(df)
+engine = sqlalchemy.create_engine(dburl)
+df = pandas.read_sql("SELECT * FROM table2", engine)
+print(df)
 #print(config.name)
 
 app = Flask(__name__)
