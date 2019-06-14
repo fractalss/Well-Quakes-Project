@@ -5,6 +5,7 @@ import flask_sqlalchemy
 import pandas
 import os
 import sqlite3
+import json
 
 if not os.environ.get('DYNO'):
     import config
@@ -17,7 +18,7 @@ else:
 
 engine = sqlalchemy.create_engine(dburl)
 df = pandas.read_sql("SELECT * FROM table2", engine)
-print(df)
+#print(df)
 #print(config.name)
 
 app = Flask(__name__)
@@ -30,7 +31,7 @@ def home():
 
 @app.route("/data")
 def data():
-    return jsonify(df.to_json(orient = "records"))
+    return jsonify(json.loads(df.to_json(orient = "records")))
 
 if __name__ == "__main__":
     app.run()
