@@ -1,6 +1,8 @@
 import sqlite3
 import pandas as pd
+import config
 
+url = config.dburl
 # load data
 df = pd.read_csv('loving.csv')
 
@@ -12,5 +14,5 @@ df.dropna()
 #import mysql.connector
 from sqlalchemy import create_engine
 
-engine = create_engine('mysql+pymysql://xs3a36vxsocpwln7:bhkfay3z4duniyef@mgs0iaapcj3p9srz.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/o0ot0vgk7yw8hhu1', echo=False)
+engine = create_engine(url, echo=False)
 df.to_sql(name='table2', con=engine, if_exists = 'append', index=False)
