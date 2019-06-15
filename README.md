@@ -1,7 +1,7 @@
 Oil & Gas Wells data analysis in 
 Loving county (Midland Basin)
 
-Team: Tommy, Saurav, Hocine 
+Team: Tommy, Saurav, Hocine, Wilton and Karista 
 
 Proposal:
 

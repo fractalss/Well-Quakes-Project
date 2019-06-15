@@ -1,16 +1,18 @@
 import sqlite3
 import pandas as pd
+import config
 
+url = config.dburl
 # load data
-df = pd.read_csv('loving_WellData.csv')
+df = pd.read_csv('loving.csv')
 
 # strip whitespace from headers
 df.columns = df.columns.str.strip()
-del df['Production_type']
-df.dropna
-con = sqlite3.connect("lovingWells.sqlite")
 
-# drop data into database
-df.to_sql("well_data", con)
+df.dropna()
 
-con.close()
+#import mysql.connector
+from sqlalchemy import create_engine
+
+engine = create_engine(url, echo=False)
+df.to_sql(name='table2', con=engine, if_exists = 'append', index=False)
