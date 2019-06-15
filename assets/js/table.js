@@ -1,5 +1,5 @@
 // from data.js
-var tableData = data;
+var tableData="https://quake-wells.herokuapp.com/data";
 
 
 // show data function
