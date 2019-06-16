@@ -16,16 +16,11 @@ body {
   }
 
   /* set map, body, and html to 100% of the screen size */
-<<<<<<< HEAD
   #map,
   body,
   html {
     height: 80%;
     width: 80%;
-=======
-  #map {
-    height: 70%;
->>>>>>> 0960147133f389178d394bcb1529f6b54df18539
   }
 
 
