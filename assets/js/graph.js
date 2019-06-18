@@ -19,9 +19,37 @@ var proxyurl = "https://cors-anywhere.herokuapp.com/";
 
     console.log(uniqueLoving); 
 
+
+
+    api= [];
+    dailyOil = [];
+    
+    // sorting the data based on the dail_oil production rate 
+    uniqueLoving.sort((a, b) => (b.Daily_Oil > a.Daily_Oil) ? 1 : -1)
+    
+    
+    for (var i = 0; i < 10; i++) {
+
+    var  api_nbr = uniqueLoving[i].API;
+    var  d_oil = uniqueLoving[i].Daily_Oil;
+    
+    api.push(api_nbr);
+    dailyOil.push(d_oil); 
+      }
+    
+    // converting API variable to string form numeric (to fix plot issue)
+    var api = api.toString();
+
+
+      console.log(api);
+      console.log(dailyOil)
+
   });
   }
 
+
+  
+  
   buildPlot();
 
 
@@ -145,7 +173,7 @@ for (var i = 0; i < prod_data.length; i++) {
 }
 
 
-// dropdown event  "oil production" "gas production" 
+// dropdown ("oil production", "gas production") for O&G production plot 
 
 var LINE = document.getElementById("graph_prod");
 function updatePlotly(newx, newy, newline) {
