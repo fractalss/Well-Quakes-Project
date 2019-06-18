@@ -1,7 +1,28 @@
+///////////////////////////////////
+///////Graph I - analysis/////////
+/////////////////////////////////
 
+// url to well data in loving county - json data type 
+var url = "https://quake-wells.herokuapp.com/data";
 
+// proxy url 
+var proxyurl = "https://cors-anywhere.herokuapp.com/";
 
+  // pulling the data 
+  function buildPlot() {
+  d3.json(proxyurl + url).then(function(loving_data) {
+    // console.log(loving_data);
 
+    // get rid of duplicated rows 
+    var uniqueLoving = loving_data.filter((loving_data, index, self) =>
+    index === self.findIndex((t) => (t.save === loving_data.save && t.API === loving_data.API)))
+
+    console.log(uniqueLoving); 
+
+  });
+  }
+
+  buildPlot();
 
 
 
@@ -43,7 +64,7 @@ var prod_url = "https://gist.githubusercontent.com/hmakhlouf/1ff8fec36385fbd6c4c
 // pulling the data 
 function buildProductionPlot() {
   d3.json(prod_url).then(function(prod_data) {
-    console.log(prod_data);
+    // console.log(prod_data);
 
        
     years = [];
