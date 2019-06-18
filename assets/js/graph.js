@@ -44,6 +44,25 @@ var proxyurl = "https://cors-anywhere.herokuapp.com/";
       console.log(api);
       console.log(dailyOil)
 
+
+
+      var trace1 = {
+        type: "bar",
+      
+        x: api,
+        y: dailyOil,
+        };
+
+        var bar_data = [trace1];  
+      
+      
+        var layout = {
+          title:'Top 10 Oil producing wells',
+        }
+
+        Plotly.newPlot("barGraph", bar_data, layout); 
+          
+
   });
   }
 
