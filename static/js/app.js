@@ -12,14 +12,15 @@ L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
   accessToken: API_KEY
 }).addTo(map);
 
-var link = "https://quake-wells.herokuapp.com/data";
-var corsLink = "https://cors-anywhere.herokuapp.com/";
+// var link = "https://quake-wells.herokuapp.com/data";
+// var corsLink = "https://cors-anywhere.herokuapp.com/";
+var link = "../static/data/data.json";
 
 // Grabbing our GeoJSON data..
-d3.json(corsLink + link).then(function (data) {
+d3.json(link).then(function (data) {
   // Creating a JSON layer with the retrieved data
   // Loop through data
-  console.log(data.length);
+  // console.log(data.length);
   for (var i = 0; i < data.length; i++) {
 
     // Set the data location property to a variable
@@ -32,6 +33,8 @@ d3.json(corsLink + link).then(function (data) {
     var oilProduction = data[i].Daily_Gas;
     var gasProduction = data[i].Daily_Oil;
     var dailyProduction = oilProduction + gasProduction / 6;
+    var d = new Date(spudDate);
+    console.log(d.getTime());
     // Color the well depending upon whether it is Oil or Gas
 
     let color = "";
@@ -54,7 +57,7 @@ d3.json(corsLink + link).then(function (data) {
         + operator + "</p><hr><p> Daily Oil Production : " + oilProduction +
         "(BBLS) </p><hr><p> Daily Gas Production : " +
         gasProduction + "(BBLS) </p><hr><p> Spud Date : " + spudDate).addTo(map);
-      console.log(prodType);
+      // console.log(prodType);
     }
   }
 

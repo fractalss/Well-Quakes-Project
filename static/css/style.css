@@ -1,17 +1,18 @@
 /* remove default margin and padding from body */
 body {
-    background: #e2d87f;
+    background: #ffffff;
     color: #5f5e5e;
+    font-family: "Verdana", Times, serif;
     padding: 0;
     margin: 0;
   }
 
  h1 {
-    color: black;
+    color: grey;
   }
 
   p {
-    color: black;
+    color: white;
     font-weight: bold;
   }
 
@@ -25,14 +26,15 @@ body {
   /* Selecting elements by ID */
   
   #header {
-    background: #df8116;
-    font-family: "Times New Roman", Times, serif;
+    background: #ffffff;
+    font-family: "Verdana", Times, serif;
     font-weight: bold;
-    color: black
+    color: grey;
+    font-size: 52px
   }
   
   #geo {
-    font-size: 52px;
+    font-size: 32px;
   }
 
 
