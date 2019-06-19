@@ -18,10 +18,11 @@ else:
 
 engine = sqlalchemy.create_engine(dburl)
 df = pandas.read_sql("SELECT * FROM table2", engine)
-#print(df)
-#print(config.name)
+# print(df)
+# print(config.name)
 
 app = Flask(__name__)
+
 
 
 
@@ -33,5 +34,13 @@ def home():
 def data():
     return jsonify(json.loads(df.to_json(orient = "records")))
 
+
+
+
 if __name__ == "__main__":
     app.run()
+
+
+
+    
+
