@@ -32,7 +32,7 @@
 
   <!-- Our CSS -->
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }} ">
-  <!-- <link rel=stylesheet type=text/css href=""> -->
+  
 </head>
 
 <body>
@@ -55,18 +55,17 @@
     </div>
 
 
-
-
-
     <!-- The div where we will inject our map -->
     <div class="map-container">
       <div id="map"></div>
-
     </div>
 
+    <!-- row for line-scatter and bar graphs  -->
     <div class="row">
+
+      <!-- line-scatter plot for O&G production  -->
       <div class="col-md-7">
-        <!-- We append our chart here. -->
+
         <div class="chart">
 
           <h4>Production type</h4>
@@ -76,16 +75,17 @@
           </select>
 
           <div id="graph_prod"></div>
+
         </div>
 
-
       </div>
+      
 
+      <!-- bar plot- data analysis -->
       <div class="col-md-5">
-        <!-- We append our chart here. -->
-        <!-- <div class="chart"> -->
-        <div id="barGraph">
-          <!-- </div> -->
+        
+        <div class="chart">
+          <div id="barGraph">
         </div>
 
       </div>
