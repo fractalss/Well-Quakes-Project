@@ -14,11 +14,9 @@ L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 
 var link = "https://quake-wells.herokuapp.com/data";
 var corsLink = "https://cors-anywhere.herokuapp.com/";
-// var link = "static/data/data.json";
-console.log(link);
 
 // Grabbing our GeoJSON data..
-d3.json(corslink + link).then(function (data) {
+d3.json(corsLink + link).then(function (data) {
   // Creating a JSON layer with the retrieved data
   // Loop through data
   console.log(data.length);
