@@ -40,5 +40,26 @@ body {
 
 
 #barGraph{
-margin-top: 60px;
+margin-top: 10px;
+}
+
+#graph_prod {
+margin-top: 10px;
+}
+
+h5{
+  margin-left: 150px;
+}
+
+
+
+select {
+  display: block;
+  margin: 0 auto;
+  margin-top: -27px
+  }
+
+button {
+  display: block;
+  margin: 0 auto;
 }
