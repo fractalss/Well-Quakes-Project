@@ -38,36 +38,95 @@ var proxyurl = "https://cors-anywhere.herokuapp.com/";
       }
     
     // converting API variable to string form numeric (to fix plot issue)
-    var api = api.toString();
+    // var api = api.toString();
 
 
       console.log(api);
       console.log(dailyOil)
 
+/////////////////////////////////////////////////////////////////////////
 
+var options = {
+  // annotations: {
+  //   points: [{
+  //     x: 'Bananas',
+  //     seriesIndex: 0,
+  //     label: {
+  //       borderColor: '#775DD0',
+  //       offsetY: 0,
+  //       style: {
+  //         color: '#fff',
+  //         background: '#775DD0',
+  //       },
+  //       text: 'Bananas are good',
+  //     }
+  //   }]
+  // },
+  chart: {
+    height: 350,
+    width:465,
+    background :'#f4f4f4',
+    type: 'bar',
+  },
+  plotOptions: {
+    bar: {
+      columnWidth: '50%',
+      endingShape: 'flat'	
+    }
+  },
+  dataLabels: {
+    enabled: false
+  },
+  stroke: {
+    width: 2
+  },
+  series: [{
+    name: 'OIL(BBL)',
+    data: dailyOil
+  }],
+  // grid: {
+  //   row: {
+  //     colors: ['#fff', '#f2f2f2']
+  //   }
+  // },
+  xaxis: {
+    labels: {
+      rotate: -45
+    },
+    categories: api
+  },
+  yaxis: {
+    title: {
+      text: 'Production',
+      size: 25,
+    },
 
-      var trace1 = {
-        type: "bar",
+  },
+  fill: {
+    type: 'gradient',
+    gradient: {
+      shade: 'light',
+      type: "horizontal",
+      shadeIntensity: 0.25,
+      gradientToColors: undefined,
+      inverseColors: true,
+      opacityFrom: 0.85,
+      opacityTo: 0.85,
+      stops: [50, 0, 100]
+    },
+  },
+
+}
+
+var chart = new ApexCharts(
+  document.querySelector("#barGraph"),
+  options
+);
+
+chart.render();
       
-        x: api,
-        y: dailyOil,
-        };
-
-        var bar_data = [trace1];  
-      
-      
-        var layout = {
-          title:'Top 10 Oil producing wells',
-          "titlefont": {
-            // family: 'Courier New, monospace',
-          "size": 25,
-        }
-
-        }
-
-        Plotly.newPlot("barGraph", bar_data, layout); 
           
-
+////////////////////////////////////////////////////////////////////////
   });
   }
 
@@ -104,10 +163,9 @@ var proxyurl = "https://cors-anywhere.herokuapp.com/";
 
 
 
-
-//////////////////////////////////////////////////////////////////////
-//////Graph II -Oil & Gas Production By Year In Loving County, TX//// 
 ////////////////////////////////////////////////////////////////////
+////Graph II -Oil & Gas Production By Year In Loving County, TX//// 
+//////////////////////////////////////////////////////////////////
 
 //url to oil&gas prod json data 
 var prod_url = "https://gist.githubusercontent.com/hmakhlouf/1ff8fec36385fbd6c4c9a162b655de46/raw/2196c76e95e6b92a1f47aa35c04fbff3a92cdc0f/Prod_LovingCounty"
@@ -159,20 +217,24 @@ for (var i = 0; i < prod_data.length; i++) {
 
 
   var layout = {
-    title:'Oil & Gas Production By Year In Loving County, TX',
+    title:'Oil & Gas Production By Year', //In Loving County, TX
     
     "titlefont": {
       // family: 'Courier New, monospace',
-    "size": 25,
+    "size": 20,
   },
-  plot_bgcolor: "#fffce4",   
+  autosize : false, 
+  width: 650,
+  height: 350,
+  paper_bgcolor: "#f4f4f4",
+  plot_bgcolor: "#f4f4f4",   
   xaxis: {
     title: {
       text: 'Years',
       font: {
-        family: 'Courier New, monospace',
-        size: 25,
-        color: '#7f7f7f'
+        // family: 'Courier New, monospace',
+        size: 13,
+        color: 'black'
       }
     },
   type: "date", 
@@ -181,9 +243,9 @@ for (var i = 0; i < prod_data.length; i++) {
     title: {
       text: 'Production',
       font: {
-        family: 'Courier New, monospace',
-        size: 25,
-        color: '#7f7f7f'
+        // family: 'Courier New, monospace',
+        size: 13,
+        color: 'black'
       }
     }
   }
