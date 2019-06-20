@@ -117,7 +117,7 @@ var options = {
   },
 
 title :{
-  text: 'Top 10 Producing Wells',
+  text: 'Top 10 Producing Wells Oil/Gas',
   align : 'center',
   margin : 20,
   offsetY: 20,
@@ -149,13 +149,13 @@ chart.render();
 
 
 /////////////////2nd: top 10 producing wells Gas//////////////////////////
-// button or a click event 
-// var chart = new ApexCharts(el, options);
+// button / click event 
 
   document.querySelector('button').addEventListener('click', 
 
   () => chart.updateSeries([{
-    data: dailyGas
+    data: dailyGas,
+    name: 'GAS(MCF/Day)',
   }]),
   )
 
@@ -165,7 +165,13 @@ chart.render();
       labels: {
         show: true
       },
-    categories: apiGas
+    categories: apiGas,
+
+    },
+
+
+    fill: {
+      colors: ['#f44336'],
 
     }
 
