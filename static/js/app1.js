@@ -18,7 +18,7 @@ var link = "../static/data/data.json";
 
 // Grabbing our GeoJSON data..
 d3.json(link).then(function (data) {
-  // Creating a JSON layer with the retrieved data
+  var itemsArray = [];
   // Loop through data
   // console.log(data.length);
   for (var i = 0; i < data.length; i++) {
@@ -30,36 +30,60 @@ d3.json(link).then(function (data) {
     var apiWellNumber = data[i].API;
     var spudDate = data[i].Spud_Date;
     var prodType = data[i].Production_type;
-    var oilProduction = data[i].Daily_Gas;
-    var gasProduction = data[i].Daily_Oil;
+    var gasProduction = data[i].Daily_Gas;
+    var oilProduction = data[i].Daily_Oil;
     var dailyProduction = oilProduction + gasProduction / 6;
-    var d = new Date(spudDate);
-    // console.log(d.getTime());
-    // Color the well depending upon whether it is Oil or Gas
+    var dStart = new Date(spudDate);
+    var dEnd = new Date("6/23/2019");
 
-    let color = "";
-    if (prodType === "OIL") {
-      color = "blue";
-    }
-    else if (prodType === "GAS") {
-      color = "red";
-    }
-    // Check for data
-    if (dailyProduction) {
-      L.circle([lat, long], {
-        fillOpacity: 0.5,
-        color: "white",
-        fillColor: color,
-        // Adjust radius
-        radius: dailyProduction * 0.5
+    itemsArray.push({
+      "lat": lat,
+      "long": long,
+      "operator": operator,
+      "apiWellNumber": apiWellNumber,
+      "spudDate": spudDate,
+      "prodType": prodType,
+      "oilProduction": oilProduction,
+      "gasProduction": gasProduction,
+      "dailyProduction": dailyProduction,
+      "dStart": dStart,
+      "dEnd": dEnd
+    })
 
-      }).bindPopup("<h3>" + "API Well Number : " + apiWellNumber + "</h3><hr><p>" + "Operator : "
-        + operator + "</p><hr><p> Daily Oil Production : " + oilProduction +
-        "(BBLS) </p><hr><p> Daily Gas Production : " +
-        gasProduction + "(BBLS) </p><hr><p> Spud Date : " + spudDate).addTo(map);
-      // console.log(prodType);
-    }
+  
+    // Sort the array based on the second element
+    sorted_data = itemsArray.sort(function (first, second) {
+      return second.spudDate - first.spudDate;
+    });
+  
+  // console.log(d.getTime());
+  // Color the well depending upon whether it is Oil or Gas
+  let color = "";
+  if (prodType === "OIL") {
+    color = "blue";
   }
+  else if (prodType === "GAS") {
+    color = "red";
+  }
+
+
+  // Check for data
+  if (dailyProduction) {
+    L.circle([lat, long], {
+      fillOpacity: 0.5,
+      color: "white",
+      fillColor: color,
+      // Adjust radius
+      radius: dailyProduction * 0.5
+
+    }).bindPopup("<h3>" + "API Well Number : " + apiWellNumber + "</h3><hr><p>" + "Operator : "
+      + operator + "</p><hr><p> Daily Oil Production : " + oilProduction +
+      "(BBLS) </p><hr><p> Daily Gas Production : " +
+      gasProduction + "(BBLS) </p><hr><p> Spud Date : " + spudDate).addTo(map);
+    // console.log(prodType);
+
+  }
+}
 
 });
 

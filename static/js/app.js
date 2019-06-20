@@ -30,8 +30,8 @@ d3.json(link).then(function (data) {
     var apiWellNumber = data[i].API;
     var spudDate = data[i].Spud_Date;
     var prodType = data[i].Production_type;
-    var oilProduction = data[i].Daily_Gas;
-    var gasProduction = data[i].Daily_Oil;
+    var gasProduction = data[i].Daily_Gas;
+    var oilProduction = data[i].Daily_Oil;
     var dailyProduction = oilProduction + gasProduction / 6;
     var d = new Date(spudDate);
     console.log(d.getTime());
