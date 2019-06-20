@@ -21,8 +21,14 @@ var proxyurl = "https://cors-anywhere.herokuapp.com/";
 
 
 
+
+  /////////////// 1st: top 10 producing OIL wells///////////////////
+
+
+    // emty arrays to hold api and dailyOil values 
     api= [];
     dailyOil = [];
+
     
     // sorting the data based on the dail_oil production rate 
     uniqueLoving.sort((a, b) => (b.Daily_Oil > a.Daily_Oil) ? 1 : -1)
@@ -30,19 +36,15 @@ var proxyurl = "https://cors-anywhere.herokuapp.com/";
     
     for (var i = 0; i < 10; i++) {
 
-    var  api_nbr = uniqueLoving[i].API;
-    var  d_oil = uniqueLoving[i].Daily_Oil;
+    // var  api_nbr = 
+    // var  d_oil = 
     
-    api.push(api_nbr);
-    dailyOil.push(d_oil); 
+    // pushing the top 10 daily_oil and API inth the arrays 
+    api.push(uniqueLoving[i].API);
+    dailyOil.push(uniqueLoving[i].Daily_Oil); 
       }
-    
-    // converting API variable to string form numeric (to fix plot issue)
-    // var api = api.toString();
-
-
-      console.log(api);
-      console.log(dailyOil)
+     console.log(api);
+    console.log(dailyOil)
 
 /////////////////////////////////////////////////////////////////////////
 
@@ -64,7 +66,7 @@ var options = {
   // },
   chart: {
     height: 350,
-    width:465,
+    width:467,
     background :'#f4f4f4',
     type: 'bar',
   },
@@ -82,7 +84,7 @@ var options = {
   //   width: 2
   // },
   series: [{
-    name: 'OIL(BBL)',
+    name: 'OIL(BBL/Day)',
     data: dailyOil
   }],
   
@@ -132,7 +134,45 @@ var chart = new ApexCharts(
 chart.render();
       
           
-////////////////////////////////////////////////////////////////////////
+
+/////////////////2nd: top 10 producing wells Gas//////////////////////////
+
+// sorting the data based on the dail_oil production rate 
+
+uniqueLoving.sort((a, b) => (b.Daily_Gas > a.Daily_Gas) ? 1 : -1)
+
+dailyGas = []
+apiGas = []
+
+for (var j = 0; j < 10; j++) {
+
+  var  apiGas_nbr = uniqueLoving[j].API;
+  var  d_Gas = uniqueLoving[j].Daily_Gas;
+  
+  apiGas.push(apiGas_nbr);
+  dailyGas.push(d_Gas); 
+    }
+
+
+console.log(apiGas)
+console.log(dailyGas)
+
+////////////////////
+
+// button or a click event 
+
+document.querySelector('button').addEventListener('click', () => chart.updateSeries({
+  series:[{
+  name: 'GAS(MCF/Day)',
+  data: dailyGas
+}]
+})
+)
+
+
+
+
+
   });
   }
 
