@@ -70,25 +70,22 @@ var options = {
   },
   plotOptions: {
     bar: {
-      columnWidth: '50%',
-      endingShape: 'flat'	
+      // columnWidth: '50%',
+      endingShape: 'flat',
+      horizontal : false, 
     }
   },
   dataLabels: {
     enabled: false
   },
-  stroke: {
-    width: 2
-  },
+  // stroke: {
+  //   width: 2
+  // },
   series: [{
     name: 'OIL(BBL)',
     data: dailyOil
   }],
-  // grid: {
-  //   row: {
-  //     colors: ['#fff', '#f2f2f2']
-  //   }
-  // },
+  
   xaxis: {
     labels: {
       rotate: -45
@@ -98,24 +95,33 @@ var options = {
   yaxis: {
     title: {
       text: 'Production',
-      size: 25,
     },
 
   },
   fill: {
-    type: 'gradient',
-    gradient: {
-      shade: 'light',
-      type: "horizontal",
-      shadeIntensity: 0.25,
-      gradientToColors: undefined,
-      inverseColors: true,
-      opacityFrom: 0.85,
-      opacityTo: 0.85,
-      stops: [50, 0, 100]
-    },
+    colors: ['#239A3B'],
+    // type: 'gradient',
+    // gradient: {
+    //   shade: 'light',
+    //   type: "horizontal",
+    //   shadeIntensity: 0.25,
+    //   gradientToColors: undefined,
+    //   inverseColors: true,
+    //   opacityFrom: 0.85,
+    //   opacityTo: 0.85,
+    //   stops: [50, 0, 100]
+    // },
   },
 
+title :{
+  text: 'Top 10 Producing Wells',
+  align : 'center',
+  margin : 20,
+  offsetY: 20,
+  style : {
+    fontSize : '25px',
+  },
+}
 }
 
 var chart = new ApexCharts(
