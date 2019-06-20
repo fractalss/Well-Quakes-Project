@@ -4,6 +4,8 @@
 <head>
   <meta charset="utf-8">
   <title>Wells Data Analysis</title>
+   <!-- favico error  -->
+  <link rel="shortcut icon" href="#"/>
 
   <!-- Leaflet CSS & JS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
@@ -23,6 +25,9 @@
   <!-- plotly cdn -->
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  
+
 
   <!--Javascript Table stuff-->
   <script src="https://d3js.org/d3.v5.min.js"></script>
@@ -34,15 +39,17 @@
 
 
   <!-- Our CSS -->
-  <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }} ">
+  
 </head>
+
 
 <body>
 
   <div class="row">
-    <div class="col-md-12 jumbotron text-center">
-      <h1 id="header" style="text-decoration: underline;">Oil and Gas Wells Analysis</h1>
-      <p>Loving County in the Permian Basin</p>
+    <div class="col-md-12 text-center">
+      <h1 id="header">Oil & Gas Well Data Analysis</h1>
+      <h1 id="header"> Loving County in the Permian Basin </h1>
     </div>
   </div>
 
@@ -55,51 +62,48 @@
         <h1 id="geo" style="text-align:center;">Geo-Maps</h1>
       </div>
     </div>
-  </div>
 
 
+    <!-- The div where we will inject our map -->
+    <div class="map-container">
+      <div id="map"></div>
+    </div>
 
-  <!-- The div where we will inject our map -->
-        <div id="map"></div>
-  <br>
+    <!-- row for line-scatter and bar graphs  -->
+    <div class="row">
+
+      <!-- line-scatter plot for O&G production  -->
+      <div class="col-md-7">
+           
+          <!-- dropdpwn event button  -->
 
 
-  <div class="row">
-    <div class="col-md-7">
-        <!-- We append our chart here. -->
-        <div class="chart">
-
-            <h4>Production type</h4>
-            <select id="selDataset" onchange="getData(this.value)">
-                <option value="dataset1">Oil Production</option>
-                <option value="dataset2">Gas Production</option>
-            </select>
+          <div id="graph_prod"></div>
+          <h5>Production type</h5>
+          <select id="selDataset" onchange="getData(this.value)">
+            <option value="dataset1">Oil(BBL)</option>
+            <option value="dataset2">Gas(MCF)</option>
+          </select>
           
-            <div id="graph_prod"></div>
-        </div>
+          
 
+          
+
+      </div>
       
-    </div>
 
-    <div class="col-md-5">
-        <!-- We append our chart here. -->
-        <!-- <div class="chart"> -->
-            <div id="barGraph">
-        <!-- </div> -->
-    </div>
-  
-  </div>
-  
-  <br>
+      <!-- bar plot- data analysis -->
+      <div class="col-md-5">
 
+          
+          <div id="barGraph"></div>
 
-  <!-- Javascript Filter Table -->
-  <div class="wrapper">
+             <button>Gas wells</button>
+        
+              
+      </div>
 
-    <div class="hero text-center">
-      <h1 style="text-decoration: underline;">Filter Table</h1>
-      <p>The Truth is Out There</p>
-    </div>
+    
 
     <div class="container">
       <div class="row margin-top-50">
@@ -158,19 +162,15 @@
             </table>
           </div>
         </div>
-
-
       </div>
+
     </div>
 
-
-
-  </div>
   
 
 
-  </div>
 
+  </div>
 
 
 
@@ -182,9 +182,17 @@
   <script type="text/javascript" src="../assets/js/graph.js"></script>
 <script type="text/javascript" src="../assets/js/table.js"></script>
 
+  <!-- API key-->
+  <script src="{{ url_for('static', filename='js/config.js') }}"></script>
+
+  <!-- Our JS -->
+  <script src="{{ url_for('static', filename='js/app1.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/graph.js') }}"></script>
 
 
-
+  <!-- <script type="text/javascript" src="../static/js/config.js"></script>
+ <script type="text/javascript" src="../static/js/app.js"></script>
+ <script type="text/javascript" src="../static/js/graph.js"></script> -->
 
 
 

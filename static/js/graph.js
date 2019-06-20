@@ -21,8 +21,14 @@ var proxyurl = "https://cors-anywhere.herokuapp.com/";
 
 
 
+
+  /////////////// 1st: top 10 producing OIL wells///////////////////
+
+
+    // emty arrays to hold api and dailyOil values 
     api= [];
     dailyOil = [];
+
     
     // sorting the data based on the dail_oil production rate 
     uniqueLoving.sort((a, b) => (b.Daily_Oil > a.Daily_Oil) ? 1 : -1)
@@ -30,51 +36,159 @@ var proxyurl = "https://cors-anywhere.herokuapp.com/";
     
     for (var i = 0; i < 10; i++) {
 
-    var  api_nbr = uniqueLoving[i].API;
-    var  d_oil = uniqueLoving[i].Daily_Oil;
+    // var  api_nbr = 
+    // var  d_oil = 
     
-    api.push(api_nbr);
-    dailyOil.push(d_oil); 
+    // pushing the top 10 daily_oil and API inth the arrays 
+    api.push(uniqueLoving[i].API);
+    dailyOil.push(uniqueLoving[i].Daily_Oil); 
       }
+     console.log(api);
+    console.log(dailyOil)
+/////////////////////////////////////////////////////////////////////////
+// sorting the data based on the dail_oil production rate 
+
+uniqueLoving.sort((a, b) => (b.Daily_Gas > a.Daily_Gas) ? 1 : -1)
+
+dailyGas = []
+apiGas = []
+
+for (var j = 0; j < 10; j++) {
+
+  var  apiGas_nbr = uniqueLoving[j].API;
+  var  d_Gas = uniqueLoving[j].Daily_Gas;
+  
+  apiGas.push(apiGas_nbr);
+  dailyGas.push(d_Gas); 
+    }
+
+
+console.log(apiGas)
+console.log(dailyGas)
+////////////////////////////////////////////////////////////////////////
+
+
+var options = {
+  // select chart type 
+  chart: {
+    height: 350,
+    width:467,
+    background :'#f4f4f4',
+    type: 'bar',
+  },
+
+  // chart options 
+  plotOptions: {
+    bar: {
+      // columnWidth: '50%',
+      endingShape: 'flat',
+      horizontal : false, 
+    }
+  },
+
+
+  dataLabels: {
+    enabled: false
+  },
+  // stroke: {
+  //   width: 2
+  // },
+  series: [{
+    name: 'OIL(BBL/Day)',
+    data:dailyOil,
     
-    // converting API variable to string form numeric (to fix plot issue)
-    var api = api.toString();
+  }],
+  
+  xaxis: {
+    labels: {
+      rotate: -45
+    },
+    categories: api
+  },
+  yaxis: {
+    title: {
+      text: 'Production',
+    },
+
+  },
+  fill: {
+    colors: ['#239A3B'],
+   
+  },
+
+title :{
+  text: 'Top 10 Producing Wells Oil/Gas',
+  align : 'center',
+  margin : 20,
+  offsetY: 20,
+  style : {
+    fontSize : '21px',
+  },
+}
+}
+
+var chart = new ApexCharts(
+  document.querySelector("#barGraph"),
+  options
+);
 
 
-      console.log(api);
-      console.log(dailyOil)
 
 
-
-      var trace1 = {
-        type: "bar",
+chart.render();
       
-        x: api,
-        y: dailyOil,
-        };
+   
 
-        var bar_data = [trace1];  
-      
-      
-        var layout = {
-          title:'Top 10 Oil producing wells',
-          "titlefont": {
-            // family: 'Courier New, monospace',
-          "size": 25,
-        }
+////////////////////////////////// test 
 
-        }
+//////////////////////////////////
 
-        Plotly.newPlot("barGraph", bar_data, layout); 
-          
 
-  });
-  }
 
+
+
+
+/////////////////2nd: top 10 producing wells Gas//////////////////////////
+// button / click event 
+
+  document.querySelector('button').addEventListener('click', 
+
+  () => chart.updateSeries([{
+    data: dailyGas,
+    name: 'GAS(MCF/Day)',
+  }]),
+  )
+
+ document.querySelector('button').addEventListener('click',
+  ()=> chart.updateOptions({
+    xaxis: {
+      labels: {
+        show: true
+      },
+    categories: apiGas,
+
+    },
+
+
+    fill: {
+      colors: ['#f44336'],
+
+    }
+
+  })
+ )
+});
+  
+}
+buildPlot();
+
+ 
+
+  
 
   
   
-  buildPlot();
+  
 
 
 
@@ -103,11 +217,9 @@ var proxyurl = "https://cors-anywhere.herokuapp.com/";
 
 
 
-
-
-//////////////////////////////////////////////////////////////////////
-//////Graph II -Oil & Gas Production By Year In Loving County, TX//// 
 ////////////////////////////////////////////////////////////////////
+////Graph II -Oil & Gas Production By Year In Loving County, TX//// 
+//////////////////////////////////////////////////////////////////
 
 //url to oil&gas prod json data 
 var prod_url = "https://gist.githubusercontent.com/hmakhlouf/1ff8fec36385fbd6c4c9a162b655de46/raw/2196c76e95e6b92a1f47aa35c04fbff3a92cdc0f/Prod_LovingCounty"
@@ -159,20 +271,24 @@ for (var i = 0; i < prod_data.length; i++) {
 
 
   var layout = {
-    title:'Oil & Gas Production By Year In Loving County, TX',
+    title:'Oil & Gas Production By Year', //In Loving County, TX
     
     "titlefont": {
       // family: 'Courier New, monospace',
-    "size": 25,
+    "size": 20,
   },
-  plot_bgcolor: "#fffce4",   
+  autosize : false, 
+  width: 650,
+  height: 350,
+  paper_bgcolor: "#f4f4f4",
+  plot_bgcolor: "#f4f4f4",   
   xaxis: {
     title: {
       text: 'Years',
       font: {
-        family: 'Courier New, monospace',
-        size: 25,
-        color: '#7f7f7f'
+        // family: 'Courier New, monospace',
+        size: 13,
+        color: 'black'
       }
     },
   type: "date", 
@@ -181,9 +297,9 @@ for (var i = 0; i < prod_data.length; i++) {
     title: {
       text: 'Production',
       font: {
-        family: 'Courier New, monospace',
-        size: 25,
-        color: '#7f7f7f'
+        // family: 'Courier New, monospace',
+        size: 13,
+        color: 'black'
       }
     }
   }
