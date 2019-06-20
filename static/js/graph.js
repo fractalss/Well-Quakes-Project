@@ -45,98 +45,7 @@ var proxyurl = "https://cors-anywhere.herokuapp.com/";
       }
      console.log(api);
     console.log(dailyOil)
-
 /////////////////////////////////////////////////////////////////////////
-
-var options = {
-  // annotations: {
-  //   points: [{
-  //     x: 'Bananas',
-  //     seriesIndex: 0,
-  //     label: {
-  //       borderColor: '#775DD0',
-  //       offsetY: 0,
-  //       style: {
-  //         color: '#fff',
-  //         background: '#775DD0',
-  //       },
-  //       text: 'Bananas are good',
-  //     }
-  //   }]
-  // },
-  chart: {
-    height: 350,
-    width:467,
-    background :'#f4f4f4',
-    type: 'bar',
-  },
-  plotOptions: {
-    bar: {
-      // columnWidth: '50%',
-      endingShape: 'flat',
-      horizontal : false, 
-    }
-  },
-  dataLabels: {
-    enabled: false
-  },
-  // stroke: {
-  //   width: 2
-  // },
-  series: [{
-    name: 'OIL(BBL/Day)',
-    data: dailyOil
-  }],
-  
-  xaxis: {
-    labels: {
-      rotate: -45
-    },
-    categories: api
-  },
-  yaxis: {
-    title: {
-      text: 'Production',
-    },
-
-  },
-  fill: {
-    colors: ['#239A3B'],
-    // type: 'gradient',
-    // gradient: {
-    //   shade: 'light',
-    //   type: "horizontal",
-    //   shadeIntensity: 0.25,
-    //   gradientToColors: undefined,
-    //   inverseColors: true,
-    //   opacityFrom: 0.85,
-    //   opacityTo: 0.85,
-    //   stops: [50, 0, 100]
-    // },
-  },
-
-title :{
-  text: 'Top 10 Producing Wells',
-  align : 'center',
-  margin : 20,
-  offsetY: 20,
-  style : {
-    fontSize : '25px',
-  },
-}
-}
-
-var chart = new ApexCharts(
-  document.querySelector("#barGraph"),
-  options
-);
-
-chart.render();
-      
-          
-
-/////////////////2nd: top 10 producing wells Gas//////////////////////////
-
 // sorting the data based on the dail_oil production rate 
 
 uniqueLoving.sort((a, b) => (b.Daily_Gas > a.Daily_Gas) ? 1 : -1)
@@ -156,31 +65,124 @@ for (var j = 0; j < 10; j++) {
 
 console.log(apiGas)
 console.log(dailyGas)
+////////////////////////////////////////////////////////////////////////
 
-////////////////////
 
+var options = {
+  // select chart type 
+  chart: {
+    height: 350,
+    width:467,
+    background :'#f4f4f4',
+    type: 'bar',
+  },
+
+  // chart options 
+  plotOptions: {
+    bar: {
+      // columnWidth: '50%',
+      endingShape: 'flat',
+      horizontal : false, 
+    }
+  },
+
+
+  dataLabels: {
+    enabled: false
+  },
+  // stroke: {
+  //   width: 2
+  // },
+  series: [{
+    name: 'OIL(BBL/Day)',
+    data:dailyOil,
+    
+  }],
+  
+  xaxis: {
+    labels: {
+      rotate: -45
+    },
+    categories: api
+  },
+  yaxis: {
+    title: {
+      text: 'Production',
+    },
+
+  },
+  fill: {
+    colors: ['#239A3B'],
+   
+  },
+
+title :{
+  text: 'Top 10 Producing Wells',
+  align : 'center',
+  margin : 20,
+  offsetY: 20,
+  style : {
+    fontSize : '21px',
+  },
+}
+}
+
+var chart = new ApexCharts(
+  document.querySelector("#barGraph"),
+  options
+);
+
+
+
+
+chart.render();
+      
+   
+
+////////////////////////////////// test 
+
+//////////////////////////////////
+
+
+
+
+
+
+/////////////////2nd: top 10 producing wells Gas//////////////////////////
 // button or a click event 
+// var chart = new ApexCharts(el, options);
 
-document.querySelector('button').addEventListener('click', () => chart.updateSeries({
-  series:[{
-  name: 'GAS(MCF/Day)',
-  data: dailyGas
-}]
-})
-)
+  document.querySelector('button').addEventListener('click', 
 
+  () => chart.updateSeries([{
+    data: dailyGas
+  }]),
+  )
 
+ document.querySelector('button').addEventListener('click',
+  ()=> chart.updateOptions({
+    xaxis: {
+      labels: {
+        show: true
+      },
+    categories: apiGas
 
+    }
 
+  })
+ )
+});
+  
+}
+buildPlot();
 
-  });
-  }
+ 
 
+  
 
   
   
-  buildPlot();
-
+  
 
 
 
