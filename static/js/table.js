@@ -1,34 +1,22 @@
-// url to well data in loving county - json data type 
-var url = "https://quake-wells.herokuapp.com/data";
 
-// proxy url 
-var proxyurl = "https://cors-anywhere.herokuapp.com/";
-
-  // pulling the data 
-  function showData() {
-      
-  d3.json(proxyurl + url).then(function(loving_data) {
-    console.log(loving_data);
- 
-
-// show data function
+dburl = "../static/data/data.json";
 
 
-    // Get a reference to the table body
+d3.json(dburl).then(function (loving_data) {
+
+    // console.log(loving_data);
     var tableBody = d3.select("tbody");
 
-    loving_data.forEach((dataobject) => {
+    loving_data.forEach(function (dataObject) {
         var row = tableBody.append("tr");
-        Object.values(dataobject).forEach((value) => {
+        Object.entries(dataObject).forEach(function ([key, value]) {
+            // console.log(value);
             row.append("td").text(value);
         });
+        // console.log(dataObject);
     });
-
-    return;
 }
-
-// show data
-
+);
 
 // Full filter - multi fields
 function myInputFilter() {
@@ -39,15 +27,14 @@ function myInputFilter() {
     // var inputElement = d3.select("#dateInput");
     // // Get the value property of the input element
     // var inputValue = inputElement.property("value");
-    // console.log(inputValue);
 
     fullFilter['operatorFilter'] = d3.select("#operatorFilter").property("value");
     fullFilter['apiFilter'] = d3.select("#apiFilter").property("value");
     fullFilter['dailyoilFilter'] = d3.select("#dailyoilFilter").property("value");
     fullFilter['dailygasFilter'] = d3.select("#dailygasFilter").property("value");
-    
-}
-    // Declare variables 
+
+    console.log(fullFilter);
+
     var filterKeys = Object.keys(fullFilter);
     var table, tr, i, j, input, filter, td, txtValue;
 
@@ -81,7 +68,6 @@ function myInputFilter() {
     }
 }
 
-});
-}
+
 // show data
 showData();
