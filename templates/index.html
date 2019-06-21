@@ -19,6 +19,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.min.js"></script>
 
+  <!-- https://d3js.org/ -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+
   <!-- plotly cdn -->
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
@@ -102,64 +105,61 @@
 
     
 
-
-       <!-- Javascript Filter Table -->
-
-    <div class='row'>
-
-    
-      <div class="wrapper">
-
-        <div class="hero text-center">
-          <!-- <h1>Filter Table</h1> -->
-          <p>The Truth is Out There</p>
-        </div>
-
-        <div class="container">
-          <div class="row margin-top-50">
+    <div class="container">
+      <div class="row margin-top-50">
 
 
-            <div class="col-md-2">
-              <aside class="filters">
-                <div class="panel panel-default">
-                  <div class="panel-heading">Filter Search</div>
-                  <div class="panel-body">
-                    <form>
-                      <div class="form-group">
-                        <ul class="list-group" id="filters">
-                          <li class="filter list-group-item">
-                            <label for="date">Enter a Date</label>
-                            <input class="form-control" id="datetime" type="text" placeholder="1/11/2011">
-                          </li>
-                        </ul>
-                      </div>
-                      <button id="filter-btn" type="submit" class="btn btn-default">Filter Table</button>
-                    </form>
-                  </div>
-                </div>
-              </aside>
-            </div>
-
-
-            <div class="col-md-10">
-              <div id="table-area" class="">
-                <table id="ufo-table" class="table table-striped">
-                  <thead>
-                    <tr>
-                      <th class="table-head">Date</th>
-                      <th class="table-head">City</th>
-                      <th class="table-head">State</th>
-                      <th class="table-head">Country</th>
-                      <th class="table-head">Shape</th>
-                      <th class="table-head">Duration</th>
-                      <th class="table-head">Comments</th>
-                    </tr>
-                  </thead>
-                  <tbody></tbody>
-                </table>
+        <div class='row'>
+          <div class='col-sm-12 col-md-3 col-lg-3'>
+              <div id='filterArea' class='col-sm-12 col-md-12 col-lg-12'>
+                  <h5>Filter / Search</h5>
+                  <input type="string" id='operatorFilter' class="col-sm-12 col-md-12 col-lg-12" onkeyup="myInputFilter()"
+                      placeholder="Search for Operator.." title="Operator">
+                      <input type="string" id='apiFilter' class="col-sm-12 col-md-12 col-lg-12" onkeyup="myInputFilter()"
+                      placeholder="Search for API" title="API">
+                      <input type="string" id='dailyoilFilter' class="col-sm-12 col-md-12 col-lg-12" onkeyup="myInputFilter()"
+                      placeholder="Search for Daily Oil Production" title="Daily Oil Production">
+                      <input type="string" id='dailygasFilter' class="col-sm-12 col-md-12 col-lg-12" onkeyup="myInputFilter()"
+                      placeholder="Search for Daily Gas Production" title="Daily Gas Production">
+                      
               </div>
-            </div>
 
+
+        <div class="row">
+          <div id="filterArea" class="col-sm-12 col-md-12 col-lg-12">
+            <table id="ufo-table" class="table table-striped">
+              <thead>
+                <tr>
+                  <th class="table-head">API</th>
+                  <th class="table-head">Completion_Date</th>
+                  <th class="table-head">Cum_BOE</th>
+                  <th class="table-head">Cum_Gas</th>
+                  <th class="table-head">Cum_Oil</th>
+                  <th class="table-head">Daily_Gas</th>
+                  <th class="table-head">Daily_Oil</th>
+                  <th class="table-head">Drilling_Type</th>
+                  <th class="table-head">Field</th>
+                  <th class="table-head">First_Month_Gas</th>
+                  <th class="table-head">First_Month_Oil</th>
+                  <th class="table-head">First_Production_Day</th>
+                  <th class="table-head">Lat</th>
+                  <th class="table-head">Lease_Name</th>
+                  <th class="table-head">Long</th>
+                  <th class="table-head">Months_Produced</th>
+                  <th class="table-head">Operator</th>
+                  <th class="table-head">Perforated_Interval_Length</th>
+                  <th class="table-head">Production_type</th>
+                  <th class="table-head">Reservoir</th>
+                  <th class="table-head">Spud_Date</th>
+                  <th class="table-head">TD</th>
+                  <th class="table-head">City</th>
+                  <th class="table-head">Unnamed</th>
+                  <th class="table-head">Well_Number</th>
+                  
+                </tr>
+              </thead>
+              <tbody id="tableBody" class="tableBody"></tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -175,6 +175,12 @@
 
 
 
+  <!-- API key -->
+  <script type="text/javascript" src="../assets/js/config.js"></script>
+  <!-- Our JS -->
+  <script type="text/javascript" src="../assets/js/app.js"></script>
+  <script type="text/javascript" src="../assets/js/graph.js"></script>
+<script type="text/javascript" src="../assets/js/table.js"></script>
 
   <!-- API key-->
   <script src="{{ url_for('static', filename='js/config.js') }}"></script>
