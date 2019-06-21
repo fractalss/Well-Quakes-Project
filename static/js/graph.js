@@ -1,6 +1,6 @@
-///////////////////////////////////
-///////Graph I - analysis/////////
-/////////////////////////////////
+/////////////////////////////////////////////////////////////
+///////Graph I - top 10 producing oil and gas wells /////////
+///////////////////////////////////////////////////////////
 
 // url to well data in loving county - json data type 
 var url = "https://quake-wells.herokuapp.com/data";
@@ -22,7 +22,7 @@ var proxyurl = "https://cors-anywhere.herokuapp.com/";
 
 
 
-  /////////////// 1st: top 10 producing OIL wells///////////////////
+  /////////////// 1 - top 10 producing OIL wells///////////////////
 
 
     // emty arrays to hold api and dailyOil values 
@@ -43,8 +43,9 @@ var proxyurl = "https://cors-anywhere.herokuapp.com/";
     api.push(uniqueLoving[i].API);
     dailyOil.push(uniqueLoving[i].Daily_Oil); 
       }
-     console.log(api);
-    console.log(dailyOil)
+    //  console.log(api);
+    // console.log(dailyOil)
+
 /////////////////////////////////////////////////////////////////////////
 // sorting the data based on the dail_oil production rate 
 
@@ -63,9 +64,12 @@ for (var j = 0; j < 10; j++) {
     }
 
 
-console.log(apiGas)
-console.log(dailyGas)
-////////////////////////////////////////////////////////////////////////
+// console.log(apiGas)
+// console.log(dailyGas)
+
+
+
+/////////////////2 - top 10 producing wells Gas////////////////////////
 
 
 var options = {
@@ -142,20 +146,13 @@ var chart = new ApexCharts(
 
 chart.render();
       
-   
 
-////////////////////////////////// test 
 
-//////////////////////////////////
+///////////3 - button / oil and gas click event /////////
 
 
 
-
-
-
-/////////////////2nd: top 10 producing wells Gas//////////////////////////
-// button / click event 
-
+///////////gas button/////////////
   document.querySelector('#btn_gas').addEventListener('click', 
 
   () => chart.updateSeries([{
@@ -185,7 +182,7 @@ chart.render();
   })
  )
 
- ////////////////
+ ///////oil button//////////////
 
  document.querySelector('#btn_oil').addEventListener('click', 
 
@@ -219,36 +216,6 @@ chart.render();
 buildPlot();
 
  
-
-  
-
-  
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
