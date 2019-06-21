@@ -37,19 +37,19 @@ d3.json(link).then(function (data) {
     var d = new Date(spudDate);
     //console.log(d.getTime());
     // Color the well depending upon whether it is Oil or Gas
-
+    var colors = ["green", "red"];
     let color = "";
     if (prodType === "OIL") {
-      color = "green";
+      color = colors[0];
     }
     else if (prodType === "GAS") {
-      color = "red";
+      color = colors[1];
     }
     // Check for data
     if (dailyProduction) {
       L.circle([lat, long], {
-        fillOpacity: 0.5,
-        color: "white",
+        fillOpacity: 0.8,
+        color: color,
         fillColor: color,
         // Adjust radius
         radius: dailyProduction * 0.5
@@ -61,6 +61,30 @@ d3.json(link).then(function (data) {
       // console.log(prodType);
     }
   }
+// Setting up the legend from the New York City Bike project example
+var legend = L.control({ position: "bottomleft" });
+legend.onAdd = function () {
+  var div = L.DomUtil.create("div", "info legend");
+  var limits = ["Oil", "Gas"];
+  var labelsColor = [];
+  var labelsText = [];
 
+  // Add min & max
+  limits.forEach(function (limit, index) {
+    labelsColor.push(`<li style="background-color: ${colors[index]};"></li>`); // <span class="legend-label">${limits[index]}</span>
+    labelsText.push(`<span class="legend-label">${limits[index]}</span>`)
+  });
+
+  var labelsColorHtml = "<ul>" + labelsColor.join("") + "</ul>";
+  var labelsTextHtml = `<div id="labels-text">${labelsText.join("<br>")}</div>`;
+
+  var legendInfo = "<h4>Wells</h4>" +
+    "<div class=\"labels\">" + labelsColorHtml + labelsTextHtml
+  "</div>";
+  div.innerHTML = legendInfo;
+
+  return div;
+}
+legend.addTo(map);
 });
 
