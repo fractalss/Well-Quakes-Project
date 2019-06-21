@@ -40,7 +40,7 @@ d3.json(link).then(function (data) {
 
     let color = "";
     if (prodType === "OIL") {
-      color = "blue";
+      color = "green";
     }
     else if (prodType === "GAS") {
       color = "red";
