@@ -69,7 +69,7 @@ for (var j = 0; j < 10; j++) {
 
 
 
-/////////////////2 - top 10 producing wells Gas////////////////////////
+/////////////////2 - top 10 producing wells Gas chart////////////////////////
 
 
 var options = {
@@ -126,7 +126,7 @@ var options = {
   },
 
 title :{
-  text: 'Top 10 Producing Oil/Gas Wells ',
+  text: 'Top 10 Producing Oil Wells ',
   align : 'center',
   margin : 20,
   offsetY: 20,
@@ -177,7 +177,18 @@ chart.render();
     fill: {
       colors: ['#f44336'],
 
+    },
+
+    title :{
+      text: 'Top 10 Producing Gas Wells ',
+      align : 'center',
+      margin : 20,
+      offsetY: 20,
+      style : {
+        fontSize : '21px',
+      },
     }
+
 
   })
  )
@@ -206,6 +217,16 @@ chart.render();
     fill: {
       colors: ['#239A3B'],
 
+    },
+
+  title :{
+      text: 'Top 10 Producing Oil Wells ',
+      align : 'center',
+      margin : 20,
+      offsetY: 20,
+      style : {
+        fontSize : '21px',
+      },
     }
 
   })
