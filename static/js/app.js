@@ -15,12 +15,13 @@ L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
 // var link = "https://quake-wells.herokuapp.com/data";
 // var corsLink = "https://cors-anywhere.herokuapp.com/";
 var link = "../static/data/data.json";
-
+// console.log(link);
+console.log(d3.json(link));
 // Grabbing our GeoJSON data..
 d3.json(link).then(function (data) {
   // Creating a JSON layer with the retrieved data
   // Loop through data
-  // console.log(data.length);
+  // console.log(data);
   for (var i = 0; i < data.length; i++) {
 
     // Set the data location property to a variable
@@ -34,7 +35,7 @@ d3.json(link).then(function (data) {
     var oilProduction = data[i].Daily_Oil;
     var dailyProduction = oilProduction + gasProduction / 6;
     var d = new Date(spudDate);
-    console.log(d.getTime());
+    //console.log(d.getTime());
     // Color the well depending upon whether it is Oil or Gas
 
     let color = "";
