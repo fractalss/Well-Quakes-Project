@@ -110,6 +110,11 @@ var options = {
       text: 'Production',
     },
 
+    style: {
+     
+      fontSize: '12px',
+    }
+
   },
   fill: {
     colors: ['#239A3B'],
@@ -117,7 +122,7 @@ var options = {
   },
 
 title :{
-  text: 'Top 10 Producing Wells Oil/Gas',
+  text: 'Top 10 Producing Oil/Gas Wells ',
   align : 'center',
   margin : 20,
   offsetY: 20,
@@ -151,15 +156,17 @@ chart.render();
 /////////////////2nd: top 10 producing wells Gas//////////////////////////
 // button / click event 
 
-  document.querySelector('button').addEventListener('click', 
+  document.querySelector('#btn_gas').addEventListener('click', 
 
   () => chart.updateSeries([{
     data: dailyGas,
     name: 'GAS(MCF/Day)',
   }]),
+ 
+
   )
 
- document.querySelector('button').addEventListener('click',
+ document.querySelector('#btn_gas').addEventListener('click',
   ()=> chart.updateOptions({
     xaxis: {
       labels: {
@@ -172,6 +179,35 @@ chart.render();
 
     fill: {
       colors: ['#f44336'],
+
+    }
+
+  })
+ )
+
+ ////////////////
+
+ document.querySelector('#btn_oil').addEventListener('click', 
+
+  () => chart.updateSeries([{
+    data: dailyOil,
+    name: 'Oil(BBL/Day)',
+  }]),
+  )
+
+ document.querySelector('#btn_oil').addEventListener('click',
+  ()=> chart.updateOptions({
+    xaxis: {
+      labels: {
+        show: true
+      },
+    categories: api,
+
+    },
+
+
+    fill: {
+      colors: ['#239A3B'],
 
     }
 
