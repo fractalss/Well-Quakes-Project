@@ -124,3 +124,11 @@ margin-top: 10px;
    
   }
 
+<<<<<<< HEAD
+=======
+  div.dataTables_wrapper {
+    width: 800px;
+    margin: 0 auto;
+}
+
+>>>>>>> 58af54e34f14c047dcf7ed238e92d0691cabd7d6
