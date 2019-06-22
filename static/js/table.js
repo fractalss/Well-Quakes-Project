@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('#wells_data').DataTable( {
+    $('#wells_love').DataTable( {
         "scrollX": true
     } );
  } );
