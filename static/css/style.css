@@ -123,3 +123,8 @@ margin-top: 10px;
     text-align: center;
    
   }
+
+  div.dataTables_wrapper {
+    width: 800px;
+    margin: 0 auto;
+}
