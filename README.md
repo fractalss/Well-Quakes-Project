@@ -1,3 +1,7 @@
+Heroku App
+https://quake-wells.herokuapp.com/
+
+
 Oil & Gas Wells data analysis in 
 Loving county (Midland Basin)
 
