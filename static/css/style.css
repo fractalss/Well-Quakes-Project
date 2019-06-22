@@ -14,7 +14,7 @@ body {
 
   p {
     color: black;
-    font: 10px"Verdana", Times, serif;
+    font: 12px"Verdana", Times, serif;
     font-weight: 200;
   }
 
@@ -130,4 +130,7 @@ margin-top: 10px;
     width: 1150px;
     margin: 0 auto;
 }
+
+div.dataTables_wrapper.dataTables_length { vertical-align:middle; }
+
 
