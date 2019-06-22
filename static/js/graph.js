@@ -3,14 +3,15 @@
 ///////////////////////////////////////////////////////////
 
 // url to well data in loving county - json data type 
-var url = "https://quake-wells.herokuapp.com/data";
+// var url = "https://quake-wells.herokuapp.com/data";
 
 // proxy url 
-var proxyurl = "https://cors-anywhere.herokuapp.com/";
+// var proxyurl = "https://cors-anywhere.herokuapp.com/";
 
+  var url = "../static/data/data.json";
   // pulling the data 
   function buildPlot() {
-  d3.json(proxyurl + url).then(function(loving_data) {
+  d3.json(url).then(function(loving_data) {
     // console.log(loving_data);
 
     // get rid of duplicated rows 
