@@ -34,6 +34,7 @@ d3.json(link).then(function (data) {
     var gasProduction = data[i].Daily_Gas;
     var oilProduction = data[i].Daily_Oil;
     var dailyProduction = oilProduction + gasProduction / 6;
+    var Reservoir = data[i].Reservoir
     var d = new Date(spudDate);
     //console.log(d.getTime());
     // Color the well depending upon whether it is Oil or Gas
@@ -51,13 +52,14 @@ d3.json(link).then(function (data) {
         fillOpacity: 0.8,
         color: color,
         fillColor: color,
-        // Adjust radius
+        // Adjust radius based on daily production
         radius: dailyProduction * 0.5
 
-      }).bindPopup("<h3>" + "API Well Number : " + apiWellNumber + "</h3><hr><p>" + "Operator : "
+      }).bindPopup("<p>" + "API Well Number : " + apiWellNumber + "</p><hr><p>" + "Reservoir : "
+      + Reservoir +"</p><hr><p>" + "Operator : "
         + operator + "</p><hr><p> Daily Oil Production : " + oilProduction +
         "(BBLS) </p><hr><p> Daily Gas Production : " +
-        gasProduction + "(BBLS) </p><hr><p> Spud Date : " + spudDate).addTo(map);
+        gasProduction + "(BOE) </p><hr><p> Spud Date : " + spudDate).addTo(map);
       // console.log(prodType);
     }
   }
