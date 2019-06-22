@@ -112,7 +112,7 @@ var options = {
   },
   yaxis: {
     title: {
-      text: 'Production',
+      text: 'Production Rate',
     },
 
     style: {
@@ -260,7 +260,7 @@ function buildProductionPlot() {
     oil_production = [];
     gas_production = [];
   
-for (var i = 0; i < prod_data.length; i++) {
+for (var i = 0; i < (prod_data.length)-1; i++) {
   
   var  yrs = prod_data[i].Years;
   var  prod_oil = prod_data[i]["Oil(BBLs)"]; 
@@ -296,7 +296,7 @@ for (var i = 0; i < prod_data.length; i++) {
 
 
   var layout = {
-    title:'Oil & Gas Production By Year', //In Loving County, TX
+    title:'Oil & Gas Production By Year (1993-2018)', //In Loving County, TX
     
     "titlefont": {
       // family: 'Courier New, monospace',
@@ -309,7 +309,7 @@ for (var i = 0; i < prod_data.length; i++) {
   plot_bgcolor: "#f4f4f4",   
   xaxis: {
     title: {
-      text: 'Years',
+      // text: 'Years',
       font: {
         // family: 'Courier New, monospace',
         size: 13,
@@ -359,23 +359,27 @@ function getData(dataset) {
 
   switch (dataset) {
   case "dataset1":
+    name = "Oil(BBLs)";
     x = years;
     y = oil_production;
     line = {
           color: "green"
         };
-    name = "Oil(BBLs)";
+
+      
+    
     
     
     break;
 
   case "dataset2":
+    name = "Gas(MCF)";
     x = years;
     y = gas_production;
     line =  {
           color: "red"
         };
-    name =  "Gas(MCF)";
+    
     
   }
 
