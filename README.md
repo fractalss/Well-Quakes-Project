@@ -2,12 +2,11 @@ Heroku App
 https://quake-wells.herokuapp.com/
 
 
-Oil & Gas Wells data analysis in 
-Loving county (Midland Basin)
+# Oil & Gas Wells data analysis in  Loving county (Midland Basin)
 
 Team: Tommy, Saurav, Hocine, Wilton and Karista 
 
-Proposal:
+# Proposal:
 
 The purpose of the project is to provide E&P and service companies a data Analytics tool that help to compare actual and historical oil and gas wells data in Loving county- Midland basin 
 1. Evaluate the possibility of drilling success (drilling new wells)
